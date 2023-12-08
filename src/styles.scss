@@ -89,6 +89,7 @@ img {
   background: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 
   svg {
     width: 32px;
@@ -120,11 +121,13 @@ img {
   }
 }
 
-.cart {
+.cart,
+.fav {
   position: relative;
 }
 
-.cartCounter {
+.cartCounter,
+.favCounter {
   position: absolute;
   right: -21px;
   top: -10px;

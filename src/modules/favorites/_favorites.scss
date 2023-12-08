@@ -1,0 +1,31 @@
+.favorites {
+  &__in {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__list {
+    flex-grow: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__empty {
+    display: none;
+  }
+
+  &.is__empty {
+    .favorites__empty {
+      display: block;
+    }
+
+    .favorites__in {
+      display: none;
+    }
+  }
+}
