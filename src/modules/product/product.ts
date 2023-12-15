@@ -3,6 +3,7 @@ import { View } from '../../utils/view';
 import { formatPrice } from '../../utils/helpers'
 import html from './product.tpl.html';
 import { ProductData } from 'types';
+import { eventAnalyticsService } from "../../services/eventAnalytics.service";
 
 type ProductComponentParams = { [key: string]: any };
 
@@ -19,6 +20,10 @@ export class Product {
 
   attach($root: HTMLElement) {
     $root.appendChild(this.view.root);
+    eventAnalyticsService.viewCard(this.view.root, this.product);
+    window.addEventListener('scroll', () => {
+      eventAnalyticsService.viewCard(this.view.root, this.product);
+    });
   }
 
   render() {

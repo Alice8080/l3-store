@@ -3,10 +3,12 @@ import { Product } from '../product/product';
 import html from './checkout.tpl.html';
 import { formatPrice } from '../../utils/helpers';
 import { cartService } from '../../services/cart.service';
+import { eventAnalyticsService } from "../../services/eventAnalytics.service";
 import { ProductData } from 'types';
 
 class Checkout extends Component {
   products!: ProductData[];
+  totalPrice!: number;
 
   async render() {
     this.products = await cartService.get();
@@ -22,8 +24,8 @@ class Checkout extends Component {
       productComp.attach(this.view.cart);
     });
 
-    const totalPrice = this.products.reduce((acc, product) => (acc += product.salePriceU), 0);
-    this.view.price.innerText = formatPrice(totalPrice);
+    this.totalPrice = this.products.reduce((acc, product) => (acc += product.salePriceU), 0);
+    this.view.price.innerText = formatPrice(this.totalPrice);
 
     this.view.btnOrder.onclick = this._makeOrder.bind(this);
   }
@@ -35,6 +37,7 @@ class Checkout extends Component {
       body: JSON.stringify(this.products)
     });
     window.location.href = '/?isSuccessOrder';
+    eventAnalyticsService.purchase(this.products, this.totalPrice);
   }
 }
 
