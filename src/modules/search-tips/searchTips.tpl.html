@@ -1,7 +1,20 @@
 <div class="search-form">
-    <input type="text">
+    <div class="search-form__input">
+        <input type="text" placeholder="Искать на Wildberries" id="search-input" data-tag="searchInput">
+        <button class="search-form__btn">
+            <svg class="svg-icon">
+                <use xlink:href="#searchIconButton"></use>
+            </svg>
+        </button>
+        <button class="search-form__btn-burger">
+            <svg class="svg-icon">
+                <use xlink:href="#searchIconButtonBurger"></use>
+            </svg>
+        </button>
+    </div>
+
     <div class="search-tips">
-        Например,
-        <div class="search-tips__tips"></div>
+        <div data-tag="tipsText">Например,</div>
+        <div class="search-tips__tips" data-tag="tips"></div>
     </div>
 </div>
