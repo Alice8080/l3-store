@@ -38,9 +38,9 @@ class EventAnalyticsService {
         }
     }
 
-    addToCard(product: ProductData) { // Добавление товара в корзину
+    addToCart(product: ProductData) { // Добавление товара в корзину
         const event: Event = {
-            type: 'addToCard',
+            type: 'addToCart',
             payload: JSON.stringify(product) // payload: всеСвойстваТовара
         };
         this._sendEvent(event);

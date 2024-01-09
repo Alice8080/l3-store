@@ -56,7 +56,7 @@ class ProductDetail extends Component {
 
     cartService.addProduct(this.product);
     this._setInCart();
-    eventAnalyticsService.addToCard(this.product);
+    eventAnalyticsService.addToCart(this.product);
   }
 
   private _setInCart() {
